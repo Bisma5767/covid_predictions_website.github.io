@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Active cases prediction</title>
+    
+
+    <style>
+#first
+{
+height:700px;
+width:400px;
+
+}
+
+        body{
+            background-image: url('static/imag3.jpg');
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+#main
+{
+height:1300px;
+width:100%;
+background-repeat:no-repeat;
+background-size: contain;
+margin-top: -7px;
+
+
+}
+#Date
+{
+    border-radius: 14px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-left:50px;
+            width:250px;
+}
+#City
+{
+    border-radius: 14px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-left:50px;
+            width:250px;
+}
+#Recovered_Cases
+{
+            border-radius: 14px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-left:50px;
+            width:250px;
+}
+#Deaths_Cases
+{
+    border-radius: 14px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-left:50px;
+            width:250px;
+}
+#Confirmed_Cases
+{
+    border-radius: 14px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            margin-left:50px;
+            width:250px;
+}
+
+#third
+{
+height:700px;
+width:400px;
+margin-left:700px;
+margin-top: -680px;
+}
+#fourth
+{
+height:50px;
+width:400px;
+margin-left:400px;
+position: static;
+margin-top:-250px;
+
+}
+
+.Province {
+            width: 250px;
+            height: 30px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 15px;
+            margin-left:50px;
+            
+        }
+        
+        .Province:hover {
+            background-color: white;
+        }
+#text{
+margin-top:600px;
+font-size:20px;
+}
+#h4
+{
+margin-bottom:-5px;
+}
+
+h2
+{
+text-align:left;
+Padding:0px;
+color:  Blue;
+font-size:20px;
+
+}
+#option
+{
+font-size:2px;
+}
+h3
+{
+margin-bottom:-3px;
+text-align:center;
+color:red;
+font-size:20px;
+padding:20px;
+
+}
+body {
+
+            padding: 0px;
+     }
+           
+</style>
+</head>
+
+<body>
+<h1 style="text-align:center; color:antiquewhite; background-color: brown; height:100px; padding: 15px;">Active cases prediction</h1>
+
+
+    
+    <div class="container">
+        <form  id='submit' action="{{ url_for('predict')}}" method="post">
+            <div id="first">
+            <div class="form-group">
+                <label for="Date">Date</label>
+                <input type="date" class="form-control" name="Date" id="Date" rows="3">
+                <small id="emailvalid" class="form-text text-muted invalid-feedback">
+                        Enter valid date
+                      </small>
+            </div>
+            <div class="form-group">
+                <label for="Confirmed_Cases">Confirmed_Cases</label>
+                <input type="text" class="form-control" id="Confirmed_Cases" name='Confirmed_cases' placeholder="Enter your username">
+                <small id="namevalid" class="form-text text-muted invalid-feedback">
+                    Input must be 2-10 characters long and should not contain any alphabet.
+                      </small>
+            </div>
+
+            <div class="form-group">
+                <label for="Recovered_Cases">Recovered_Cases</label>
+                <input type="text" class="form-control" id="Recovered_Cases" name='Recovered_cases'  placeholder="Enter your email">
+                <small id="emailvalid" class="form-text text-muted invalid-feedback">
+                    Input must be 2-10 characters long and should not contain any alphabet.
+                      </small>
+            </div>
+            
+            <div class="form-group">
+                <label for="Deaths_Cases">Deaths_Cases</label>
+                <input class="form-control" name="Deaths_cases" id="Deaths_Cases" rows="3">
+                <small id="emailvalid" class="form-text text-muted invalid-feedback">
+                    Input must be 2-10 characters long and should not contain any alphabet.
+                      </small>
+            </div>
+            
+        </div>
+<div id="third">
+<div class="form-group">
+<label for="Province">Province</label>
+              <select name="Province" id="Province" class="form-control">
+                <option value="Punjab">Punjab</option>
+                <option value="Sindh">Sindh</option>
+                <option value="Baluchistan">Baluchistan</option>
+                <option value="Khyber_Pakhtunkhwa">Khyber_Pakhtunkhwa</option>
+                <option value="Islamabad_Capital_Territory">Islamabad_Capital_Territory</option>
+                <option value="Federal_Admininistration_Tribal_Area">Federal_Admininistration_Tribal_Area</option>
+                <option value="Gilgit_Baltistan">Gilgit_Baltistan</option>
+            </select>
+            <small id="emailvalid" class="form-text text-muted invalid-feedback">
+                Your username must be 4-10 characters long and should not contain  any number.                  </small>
+            </small>
+        </div>      
+        <div class="form-group">
+            <label for="Travel_history">Travel_History</label>
+           <select name="Travel_history" id="Travel_history" class="form-control">
+                                <option value="Travel_history_China">Travel_history_China</option>
+                                <option value="Travel_history_Dubai">Travel_history_Dubai</option>
+                                <option value="Travel_history_International_Passenger">Travel_history_International_Passenger</option>
+                                <option value="Travel_history_Jail">Travel_history_Jail</option>
+                                <option value="Travel_history_KSA">Travel_history_KSA</option>
+                                <option value="Travel_history_Tableeghi_Jamaat">Travel_history_Tableeghi_Jamaat</option>
+                                <option value="Travel_history_Syria">Travel_history_Syria</option>
+                                <option value="Travel_history_UK">Travel_history_UK</option>
+                                <option value="Travel_history_USA">Travel_history_USA</option>
+                                <option value="Travel_history_Local_Social_Contact">Travel_history_Local_Social_Contact</option>                              
+                                <option value="Travel_history_Iran_Taftan">Travel_history_Iran_Taftan</option>
+                                <option value="Travel_history_Unknown">Travel_history_Unknown</option>
+                                <option value="Local_Covid_Relative"> Local_Covid_Relative</option>
+
+                            </select>   
+                            <small id="emailvalid" class="form-text text-muted invalid-feedback">
+                                Your username must be 4-10 characters long and should not contain  any number.                                  </small>
+        </div>
+                                
+        <div class="form-group">
+            <label for="City">  City</label>    
+         <input id="City"  class="form-control"  name="City" required="required">
+         <small id="Cityvalid" class="form-text text-muted invalid-feedback">
+            Your username must be 4-10 characters long and should not contain  any number.
+          </small>
+
+</div>
+</div>
+         
+             <div id="fourth"  >
+            <button style="direction:inherit;" type="submit ">prediction</button>
+            <h2 style="border:blue">{{prediction_texts}}</h2>
+
+            <button style="direction:inherit;"  id="go back" type="submit ">go back</button>
+            
+</div>
+     </form>
+
+
+
+     
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src= "/static/javascript/k23.js" type="text/javascript"></script>
+</body>
+</html>
+
